@@ -102,7 +102,7 @@ public class ConceptWebcam extends LinearOpMode {
     private File captureDirectory = AppUtil.ROBOT_DATA_DIR;
 
     /** A utility object that indicates where the asynchronous callbacks from the camera
-     * infrastructure are to run. In this OpMode, that's all hidden from you (but see {@link #startCamera}
+     * infrastructure are to run. In this OpMode ,that's all hidden from you (but see {@link #startCamera}
      * if you're curious): no knowledge of multi-threading is needed here. */
     private Handler callbackHandler;
 
