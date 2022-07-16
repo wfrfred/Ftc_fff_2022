@@ -21,33 +21,21 @@ public class AutoOpMode extends LinearOpMode {
         cvModule = new CvModuleImpl(hardwareMap);
         functionModule = new FunctionModuleImpl(hardwareMap);
         motionModule = new MotionModuleWith_LvDai(hardwareMap);
-        int[] mode = new int[]{0,0,0};
-        for(int i = 0;i < 60;i++){
-            mode[cvModule.getMode()]++;
-        }
-        int max = mode[0];
-        for(int i:mode){
-            if (i >= max) max = i;
-        }
+//        int[] mode = new int[]{0,0,0};
+//        for(int i = 0;i < 60;i++){
+//            mode[cvModule.getMode()]++;
+//        }
+//        int max = mode[0];
+//        for(int i:mode){
+//            if (i >= max) max = i;
+//        }
         waitForStart();
 
-        motionModule.rotate(1);
-        sleep(1000);
-        motionModule.stop();
-        motionModule.move(1);
-        sleep(2000);
-        functionModule.elevating(max);
-        sleep(1000);
-        functionModule.shooting(true);
-        sleep(1000);
-        functionModule.shooting(false);
-        functionModule.elevating(0);
+        motionModule.movePosition(0.5,100);
+        sleep(4000);
+        motionModule.rotatePosition(0.5,100);
+        while (opModeIsActive()){
 
-        motionModule.rotate(1);
-        sleep(2000);
-        motionModule.stop();
-        motionModule.move(1);
-        sleep(5000);
-        motionModule.stop();
+        }
     }
 }

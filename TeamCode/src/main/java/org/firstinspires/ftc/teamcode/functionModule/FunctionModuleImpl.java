@@ -51,7 +51,7 @@ public class FunctionModuleImpl implements FunctionModule {
 
     @Override
     public void rotating(boolean start) {
-        if (start) rotator.setPower(1);
+        if (start) rotator.setPower(-0.4);
         else rotator.setPower(0);
     }
 }

@@ -19,6 +19,7 @@ public class FtcControllerImpl extends AbstractFtcController {
     private boolean isRotating = false;
     private boolean isShooting = false;
     private boolean isInvolving = false;
+    private double k = 1;
 
     private final FunctionModule functionModule;
     private final MotionModule motionModule;
@@ -26,25 +27,32 @@ public class FtcControllerImpl extends AbstractFtcController {
     private final GamepadListener gamepadListener = new GamepadListener() {
         @Override
         public void pressA() {
-            isShooting = !isShooting;
-            functionModule.shooting(isShooting);
-        }
-
-        @Override
-        public void pressB() {
             isRotating = !isRotating;
             functionModule.rotating(isRotating);
         }
 
         @Override
+        public void pressB() {
+            if (k==1)k=0.5;
+            else k=1;
+        }
+
+        @Override
         public void pressX() {
             if (floor == 0) {
+                if(isShooting && !(isInvolving)){
+                    isShooting = false;
+                    functionModule.shooting(false);
+                }
                 isInvolving = !isInvolving;
                 functionModule.involving(isInvolving);
             }
+
         }
         @Override
         public void pressY() {
+            isShooting = !isShooting;
+            functionModule.shooting(isShooting);
         }
 
         @Override
@@ -110,9 +118,10 @@ public class FtcControllerImpl extends AbstractFtcController {
                         motionModule.moveGamepad(
                                 gamepad1.getMotion(MyGamepad.Code.LEFT_STICK_Y),
                                 //motionModule.turn(targetTotalAngle),
-                                -gamepad1.getMotion(MyGamepad.Code.RIGHT_STICK_X),
-                                1 - gamepad1.getMotion(MyGamepad.Code.RIGHT_TRIGGER)
+                                -gamepad1.getMotion(MyGamepad.Code.LEFT_STICK_X),
+                                k
                         );
+//                        System.out.println(gamepad1.getMotion(MyGamepad.Code.RIGHT_TRIGGER)+"qwerty");
                     }
                 }
             }
