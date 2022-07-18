@@ -13,9 +13,12 @@ public class CameraTest extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         cvModule = new CvModuleImpl(hardwareMap);
         waitForStart();
+
         while (opModeIsActive()) {
             System.out.println(cvModule.getMode());
         }
     }
 
 }
+
+

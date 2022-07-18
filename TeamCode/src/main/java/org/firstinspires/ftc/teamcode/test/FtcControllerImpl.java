@@ -35,6 +35,7 @@ public class FtcControllerImpl extends AbstractFtcController {
         public void pressB() {
             if (k==1)k=0.5;
             else k=1;
+
         }
 
         @Override
@@ -47,7 +48,6 @@ public class FtcControllerImpl extends AbstractFtcController {
                 isInvolving = !isInvolving;
                 functionModule.involving(isInvolving);
             }
-
         }
         @Override
         public void pressY() {
@@ -79,12 +79,16 @@ public class FtcControllerImpl extends AbstractFtcController {
 
         @Override
         public void pressThumbR() {
-            //functionModule.elevating(0);
+            motionModule.stop();
+            functionModule.involving(false);
+            functionModule.elevating(0);
+            functionModule.rotating(false);
+            functionModule.shooting(false);
         }
 
         @Override
         public void pressThumbL() {
-            //functionModule.elevating(1);
+            motionModule.movePosition(0.5,-100);
         }
     };
 
@@ -114,19 +118,19 @@ public class FtcControllerImpl extends AbstractFtcController {
             while (true) {
                 if (isMotionModuleManual) {
                     //targetTotalAngle += gamepad1.getMotion(MyGamepad.Code.RIGHT_STICK_X);
-                    synchronized (motionModule) {
                         motionModule.moveGamepad(
                                 gamepad1.getMotion(MyGamepad.Code.LEFT_STICK_Y),
                                 //motionModule.turn(targetTotalAngle),
-                                -gamepad1.getMotion(MyGamepad.Code.LEFT_STICK_X),
+                                gamepad1.getMotion(MyGamepad.Code.LEFT_STICK_X),
                                 k
                         );
 //                        System.out.println(gamepad1.getMotion(MyGamepad.Code.RIGHT_TRIGGER)+"qwerty");
-                    }
                 }
             }
         }
     }, "MotionModule");
+
+
 
 
 

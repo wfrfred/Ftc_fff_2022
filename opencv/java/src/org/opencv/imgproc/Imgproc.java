@@ -25,6 +25,12 @@ import org.opencv.utils.Converters;
 
 // C++: class Imgproc
 
+/**
+ * imgproc
+ *
+ * @author wfrfred
+ * @date 2022/07/17
+ */
 public class Imgproc {
 
     private static final int
