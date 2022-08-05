@@ -3,9 +3,6 @@ package org.firstinspires.ftc.teamcode.main;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-
-import org.firstinspires.ftc.teamcode.cvModule.CvModule;
-import org.firstinspires.ftc.teamcode.cvModule.CvModuleImpl;
 import org.firstinspires.ftc.teamcode.functionModule.FunctionModule;
 import org.firstinspires.ftc.teamcode.functionModule.FunctionModuleImpl;
 import org.firstinspires.ftc.teamcode.motionModule.MotionModule;

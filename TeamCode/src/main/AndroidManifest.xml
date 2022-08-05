@@ -10,5 +10,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-feature android:name="android.hardware.camera.any" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <application/>
+
+    <!-- 读取您的USB存储设备中的内容 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 修改或删除您的USB存储设备中的内容 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
+    <application
+        android:requestLegacyExternalStorage = "true"
+        />
 </manifest>

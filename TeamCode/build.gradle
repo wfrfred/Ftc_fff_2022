@@ -17,7 +17,5 @@ apply from: '../build.dependencies.gradle'
 
 dependencies {
     implementation project(':FtcRobotController')
-    implementation project(path: ':opencv')
-    compileOnly fileTree(dir:'lib',includes:['*jar'])
     annotationProcessor files('lib/OpModeAnnotationProcessor.jar')
 }
