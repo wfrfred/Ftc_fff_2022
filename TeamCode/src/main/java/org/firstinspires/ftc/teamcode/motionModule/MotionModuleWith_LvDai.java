@@ -9,6 +9,10 @@ public class MotionModuleWith_LvDai implements MotionModule {
     public MotionModuleWith_LvDai(HardwareMap hardwareMap) {
         motor[0] = hardwareMap.dcMotor.get("r");
         motor[1] = hardwareMap.dcMotor.get("l");
+        System.out.print("right:");
+        System.out.println(motor[0].getCurrentPosition());
+        System.out.print("left:");
+        System.out.println(motor[1].getCurrentPosition());
     }
 
     @Override
@@ -27,6 +31,12 @@ public class MotionModuleWith_LvDai implements MotionModule {
         motor[1].setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motor[0].setPower(speed);
         motor[1].setPower(-speed);
+        int bias1=-length;
+        int bias2= length;
+        while ((bias1 != 0)&&(bias2 != 0)){
+            bias1 = motor[0].getCurrentPosition() - p1;
+            bias2 = motor[1].getCurrentPosition() - p2;
+        }
     }
 
     @Override
@@ -45,6 +55,12 @@ public class MotionModuleWith_LvDai implements MotionModule {
         motor[1].setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motor[0].setPower(speed);
         motor[1].setPower(-speed);
+        int bias1=-angle;
+        int bias2=-angle;
+        while ((bias1 != 0)&&(bias2 != 0)){
+            bias1 = motor[0].getCurrentPosition() - p1;
+            bias2 = motor[1].getCurrentPosition() - p2;
+        }
     }
 
     @Override

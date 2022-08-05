@@ -4,6 +4,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import java.time.Instant;
+import java.util.Date;
+
 /**
  * 功能模块接口实现
  *
@@ -51,7 +54,22 @@ public class FunctionModuleImpl implements FunctionModule {
 
     @Override
     public void rotating(boolean start) {
-        if (start) rotator.setPower(0.45);
+        if (start) {
+            Date before = new Date();
+            Date now = new Date();
+
+            double t=0;
+            while (t<=1){
+                now = new Date();
+                t = ((double)(now.getTime()-before.getTime()))/1000;
+                rotator.setPower(t*(2-t));
+            }
+            while (t<=1.6){
+                now = new Date();
+                t = ((double)(now.getTime()-before.getTime()))/1000;
+            }
+            rotator.setPower(0);
+        }
         else rotator.setPower(0);
     }
 }

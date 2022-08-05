@@ -14,7 +14,7 @@ public class Test extends OpMode {
 
     @Override
     public void init() {
-        ftcController = new FtcControllerImpl(gamepad1,hardwareMap);
+        ftcController = new FtcControllerImpl(gamepad1,hardwareMap,telemetry);
     }
 
     @Override
